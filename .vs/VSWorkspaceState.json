@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\blueprints",
+    "\\blueprints\\auth",
+    "\\blueprints\\post",
+    "\\blueprints\\user",
+    "\\static",
+    "\\templates"
+  ],
+  "SelectedNode": "\\app.py",
+  "PreviewInSolutionExplorer": false
+}
