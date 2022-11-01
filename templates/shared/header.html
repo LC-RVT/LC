@@ -7,18 +7,21 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('about') }}">Par mums</a>
+            </li>
           {% if not session.is_logged_in %}
             <li class="nav-item {% if request.path == url_for('auth.login') %} active {% endif %}">
-              <a class="nav-link" href="{{ url_for('auth.login') }}">Login</a>
+              <a class="nav-link" href="{{ url_for('auth.login') }}">Ielogoties</a>
             </li>
             <li class="nav-item {% if request.path == url_for('auth.register') %} active {% endif %}">
-              <a class="nav-link" href="{{ url_for('auth.register') }}">Register</a>
+              <a class="nav-link" href="{{ url_for('auth.register') }}">Pievienoties</a>
             </li>
           {% else %}
             <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a>
+              <a class="nav-link" href="{{ url_for('auth.logout') }}">Iziet</a>
             </li>
           {% endif %}
         </ul>
