@@ -9,28 +9,28 @@
           {{ form.csrf_token() }}
 
           <div class="text-center mb-4">
-            <h1 class="h3 mb-3 font-weight-normal">Signup now!</h1>
+            <h1 class="h3 mb-3 font-weight-normal">Izveido profilu un pievienojies!</h1>
           </div>
 
           {% include "shared/flash.html" %}
 
           <div class="form-label-group mb-4">
-            <input name="name" type="text" id="inputName" class="form-control" placeholder="Name" required autofocus>
+            <input name="name" type="text" id="inputName" class="form-control" placeholder="Lietājvārds" required autofocus>
           </div>
 
           <div class="form-label-group mb-4">
-            <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
+            <input name="email" type="email" id="inputEmail" class="form-control" placeholder="E-pasta adrese" required>
           </div>
 
           <div class="form-label-group mb-4">
-            <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+            <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Parole" required>
           </div>
 
           <div class="form-label-group mb-4">
-            <input name="confirm_password" type="password" id="inputConfirmPassword" class="form-control" placeholder="Confirm password" required>
+            <input name="confirm_password" type="password" id="inputConfirmPassword" class="form-control" placeholder="Apstipriniet paroli" required>
           </div>
 
-          <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+          <button class="btn btn-lg btn-outline-secondary btn-block" type="submit">Pievienoties</button>
 
         </form>
       </div>

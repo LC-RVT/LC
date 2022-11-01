@@ -9,20 +9,20 @@
           {{ form.csrf_token() }}
 
           <div class="text-center mb-4">
-            <h1 class="h3 mb-3 font-weight-normal">Welcome back!</h1>
+            <h1 class="h3 mb-3 font-weight-normal">Esiet sviecināti atpakaļ!</h1>
           </div>
 
           {% include "shared/flash.html" %}
 
           <div class="form-label-group mb-4">
-            <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+            <input name="email" type="email" id="inputEmail" class="form-control" placeholder="E-pasta adrese" required autofocus>
           </div>
 
           <div class="form-label-group mb-4">
-            <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+            <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Parole" required>
           </div>
 
-          <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+          <button class="btn btn-lg btn-outline-secondary btn-block" type="submit">Ielogoties</button>
 
         </form>
       </div>
