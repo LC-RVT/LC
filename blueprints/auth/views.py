@@ -44,9 +44,12 @@ def register():
 
     if form.validate_on_submit():
         email = form.email.data
-        existing_user = User.get_or_none(User.email == email)
-        if existing_user:
-            flash(f'User {email} already exists!', category='danger')
+        name = form.name.data
+        existing_email = User.get_or_none(User.email == email)
+        existing_name = User.get_or_none(User.name == name)
+
+        if existing_email and existing_name:
+            flash(f'Username or email already exists!', category='danger')
             return redirect(url_for('auth.register'))
 
         password_hash = generate_password_hash(form.password.data)
