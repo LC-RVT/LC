@@ -1,46 +1,78 @@
+#board-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  overflow: hidden;
+  padding-top: 35px;
+}
 
-  .keyboard {
-    display: grid;
-    grid-template-columns: repeat(25, minmax(auto, 1.25em));
-    grid-auto-rows: 3em;
-    gap: .25em;
-    justify-content: center;
-    
-  }
-  
-  .key {
-    grid-column: span 2;
-    border: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: gray;
-    color: white;
-    fill: white;
-    border-radius: .25em;
-    cursor: pointer;
-  }
+#container {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  flex-direction: column;
+}
 
-.key.large {
-    grid-column: span 3;
-  }
+#game {
+  width: 100%;
+  max-width: 500px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
 
-  .guess-grid {
-    display: grid;
-    justify-content: center;
-    align-content: center;
-    flex-grow: 1;
-    grid-template-columns: repeat(5, 4em);
-    grid-template-rows: repeat(6, 4em);
-    gap: .25em;
-    margin-bottom: 1em;
-  }
-  
-  .tile {
-    color: white;
-    border: .05em solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+#board {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 5px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.square {
+  border: 1px solid rgb(0, 0, 0);
+  min-width: 60px;
+  min-height: 60px;
+  font-size: 2rem;
+  font-weight: bold;
+  border-radius: 5px;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#keyboard-container {
+  padding-top: 60px;
+  height: 200px;
+}
+
+.keyboard-row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto 4px;
+  touch-action: manipulation;
+}
+
+.keyboard-row button {
+  font-weight: bold;
+  border: 0;
+  padding: 0;
+  height: 50px;
+  width: 40px;
+  cursor: pointer;
+  background-color: gray;
+  border-radius: 5px;
+  flex-grow: 1;
+  color: white;
+  text-transform: uppercase;
+  margin-right: 6px;
+  user-select: none;
+}
+
+.wide-button {
+  min-width: 60px;
+}
