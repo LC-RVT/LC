@@ -3,7 +3,8 @@ from blueprints.auth.views import bp as bp_auth
 
 app = Flask(__name__)
 app.secret_key = 'qwerty123'
-app.debug = True
+if __name__ == "__main__":
+    app.run(debug=True)
 
 @app.route('/')
 def home():
