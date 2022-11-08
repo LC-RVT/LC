@@ -1,0 +1,46 @@
+  <!-- Modal -->
+  <div class="modal fade modal-dialog-centered" id="myModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <h4>Spēles noteikumi:</h4>
+
+            <p>Katru dienu spēlētājam ir dota iespēja mēģināt uzminēt vārdu.</p>
+
+            <hr>
+
+            <ul>
+                <li>Ir 6 mēģinājumi uzminēt vārdu.</li>
+                <li>Katra mēģinājuma vārds sastāv no 5 burtiem.</li>
+                <li>Kad tiek uzminēts viens no burtiem, kas ir vārdā, maina krāsu.</li>
+            </ul>
+        
+            <hr>
+            <p><a href="/" style="text-decoration: none;">Šeit</a> var apsktaīties jūsu iepriekšējās spēles.</p>
+            <hr>
+
+            <p>Katra jauna minēšanas iespēja dodas katru dienu</p> 
+            <p>Lai saņemtu atgādinājumus par ikdienas spēli jums ir nepieciešams <a href="/auth/register" style="text-decoration: none;">reģistrēties</a></p>
+
+            
+        </div>
+
+
+        
+      </div>
+    </div>
+  </div>
+
+<script>
+
+const myModal = new bootstrap.Modal('#myModal', {
+  keyboard: false
+})
+
+const modalToggle = document.getElementById('myModal'); 
+myModal.show(modalToggle)
+
+</script>

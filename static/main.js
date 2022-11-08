@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function createSquares() {
         const gameBoard = document.getElementById("board")
-        let fs = require("fs")
         let guessedWords = [[]];
         let availableSpace = 1;
         let word = "kaķis";
