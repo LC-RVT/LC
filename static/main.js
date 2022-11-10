@@ -7,26 +7,32 @@ document.addEventListener("DOMContentLoaded", () => {
         let availableSpace = 1;
         let word = "kaķis";
         let guessedWordCount = 0;
+        let spaces = 1;
 
         const keys = document.querySelectorAll('.keyboard-row button');
         
+
+        //pārbauda vai burts ir vārdā un attiecīgi iedod pareizo krāsu tam
         function getTileColor(letter, index) {
             const isCorrectLetter = word.toUpperCase().includes(letter);
-        
+            
+            //burts nav
             if (!isCorrectLetter) {
               return "rgb(160, 40, 60)";
             }
         
             const letterInThatPosition = word.toUpperCase().charAt(index);
             const isCorrectPosition = letter === letterInThatPosition;
-        
+            
+            //burts ir pareizajā vietā
             if (isCorrectPosition) {
               return "rgb(83, 141, 78)";
             }
-        
+            //burts ir vārdā
             return "rgb(181, 159, 59)";
         }
 
+        //pārbauda vai tiek ievadīti pieci burti
         function handleSubmitWord () {
             const currentWordArr = getCurrentWordArr()
             if (currentWordArr.length !== 5) {
@@ -34,6 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
+            //animācija
             const currentWord = currentWordArr.join("")
 
             const firstLetterId = guessedWordCount * 5 + 1;
@@ -60,6 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             guessedWords.push([]);
+            spaces += 5;
         }
 
         function getCurrentWordArr() {
@@ -86,9 +94,15 @@ document.addEventListener("DOMContentLoaded", () => {
             guessedWords[guessedWords.length - 1] = currentWordArr;
         
             const lastLetterEl = document.getElementById(String(availableSpace - 1));
-        
-            lastLetterEl.textContent = "";
-            availableSpace = availableSpace - 1;
+
+            if (availableSpace !== 1) {
+                if (availableSpace > spaces ) {
+                    lastLetterEl.textContent = "";
+                    availableSpace -= 1;
+                }
+            } else {
+                return;
+            }
           }
         
 

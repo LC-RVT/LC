@@ -1,7 +1,5 @@
 {
   "dependencies": {
-    "bootstrap": "^5.2.2",
-    "file-system": "^2.2.2",
-    "fs.promises": "^0.1.2"
+    "bootstrap": "^5.2.2"
   }
 }
