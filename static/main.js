@@ -14,65 +14,100 @@ document.addEventListener("DOMContentLoaded", () => {
     .then( r => r.text())
     .then((data) => {
         let temp = data.split("\n");
-        word = temp[Math.floor(Math.random() * temp.length)];
+        word = temp[Math.floor(Math.random() * temp.length)]
+        console.log(word);
     })
     
-
+    
     //pārbauda vai burts ir vārdā un attiecīgi iedod pareizo krāsu tam
     function getTileColor(letter, index) {
-        const isCorrectLetter = word.toUpperCase().includes(letter);
         
-        //burts nav
-        if (!isCorrectLetter) {
-            return "rgb(160, 40, 60)";
+        let letterCount = {};
+        for (let i = 0; i < word.length; i++) {
+            letterInWord = word[i];
+            if (letterCount[letterInWord]) {
+                letterCount[letterInWord] += 1;
+            } else {
+                letterCount[letterInWord] = 1;
+            }
         }
-
+        
+        const isCorrectLetter = word.toUpperCase().includes(letter);
         const letterInThatPosition = word.toUpperCase().charAt(index);
         const isCorrectPosition = letter === letterInThatPosition;
+
+        for (let i = 0; i < word.length; i++) {
+            if (isCorrectPosition && isCorrectLetter) {
+                return "rgb(83, 141, 78)"; //green
+            }
+            if (isCorrectLetter) {
+                return "rgb(181, 159, 59)"; //orange
+            }
+            return "rgb(160, 40, 60)"; //red
+        }
         
-        //burts ir pareizajā vietā
-        if (isCorrectPosition) {
-            return "rgb(83, 141, 78)";
-        } 
-        return "rgb(181, 159, 59)";
+        
+        // return "rgb(83, 141, 78)"; //green
+        // return "rgb(181, 159, 59)"; //orange
+        // return "rgb(160, 40, 60)"; //red
     }
 
     function handleSubmitWord () {
         //pārbauda vai ir ievadīti 5 burti
         const currentWordArr = getCurrentWordArr()
-        if (currentWordArr.length !== 5) {
-            window.alert("5 letter dipshit");
-            return;
-        }
-
-        //animācija
         const currentWord = currentWordArr.join("")
 
-        const firstLetterId = guessedWordCount * 5 + 1;
-        const interval = 100;
-        currentWordArr.forEach((letter, index) => {
-            setTimeout(() => {
-                const tileColor = getTileColor(letter, index);
+        fetch('https://raw.githubusercontent.com/LC-RVT/LC/main/wordlist.txt')
+        .then( r => r.text())
+        .then((data) => {
+            let temp = data.split("\n");
+            for (let i = 0; i < temp.length; i++) {
+                if (currentWord === temp[i].toUpperCase()) {
 
-                const letterId = firstLetterId + index;
-                const letterEl = document.getElementById(letterId);
-                letterEl.classList.add("animate__flipInX");
-                letterEl.style = `background-color:${tileColor};border-color:${tileColor}`;
-            }, interval * index);
+                    const firstLetterId = guessedWordCount * 5 + 1;
+                    const interval = 100;
+                    currentWordArr.forEach((letter, index) => {
+                        setTimeout(() => {
+                            const tileColor = getTileColor(letter, index);
+
+                            const letterId = firstLetterId + index;
+                            const letterEl = document.getElementById(letterId);
+                            letterEl.classList.add("animate__flipInX");
+                            letterEl.style = `background-color:${tileColor};border-color:${tileColor}`;
+                        }, interval * index);
+                    });
+
+                    guessedWordCount += 1;
+
+                    if (currentWord === word.toUpperCase()) {
+                        window.alert("Apsveicu tu esi atminējis vārdu pareizi!");
+                    }
+            
+                    if (guessedWords.length === 6 && currentWord !== word.toUpperCase()) {
+                        window.alert(`Tu neesi uzminējis vārdu, pareizais vārds bija ${word}.`);
+                    }
+            
+                    guessedWords.push([]);
+                    spaces += 5;
+                    return;
+                }
+            }
+            if (currentWordArr.length !== 5) {
+                window.alert("Jāievada 5 burti");
+                return;
+            }
+
+            window.alert("Tāds vārds nepastāv");
+            const lastLetterEl = document.getElementById(String(availableSpace - 1));
+            for (let i = 0; i < 5; i++) {
+                
+            }
         });
 
-        guessedWordCount += 1;
+        //animācija
+        
 
-        if (currentWord === word.toUpperCase()) {
-            window.alert("Congratulations!");
-        }
-
-        if (guessedWords.length === 6 && currentWord !== word.toUpperCase()) {
-            window.alert(`Sorry, you have no more guesses! The word is ${word}.`);
-        }
-
-        guessedWords.push([]);
-        spaces += 5;
+        
     }
 
     function getCurrentWordArr() {
@@ -80,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return guessedWords[numberOfGuessedWords - 1];
     }
 
-    //pievieno masivam ievaditos burtus
+    //pievieno masīvam ievaditos burtus
     function updateGuessedWords(letter) {
         const currentWordArr = getCurrentWordArr();
 

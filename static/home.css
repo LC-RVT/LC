@@ -76,3 +76,7 @@
 .wide-button {
   min-width: 60px;
 }
+
+.isCorrectKey {
+  background-color: green;
+}
