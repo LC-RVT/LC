@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "bootstrap": "^5.2.2",
-    "jquerry": "^0.0.1-security"
+    "jquerry": "^0.0.1-security",
+    "sweetalert": "^2.1.2"
   }
 }
